@@ -11,7 +11,8 @@ def home(request):
     if request.method == 'POST':
         login_form = CardLoginForm(request.POST)
         card_number = request.POST['id']
-        record = Record.objects.get(id=card_number)
+        record = Record.objects.filter(id=card_number).first()
+        print(record)
         if record is not None:
             return redirect('/admin')
         else:
