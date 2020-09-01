@@ -12,10 +12,11 @@ def home(request):
     if request.method == 'POST':
         login_form = CardLoginForm(request.POST)
         card_number = request.POST['id']
+        request.session['card_number'] = card_number
         record = Record.objects.filter(id=card_number).first()
         print(record)
         if record is not None:
-            return redirect(f'/auth_otp?card_number={card_number}')
+            return redirect(f'/auth_otp')
         else:
             return redirect('/')
     else:
@@ -26,7 +27,7 @@ def home(request):
 
 def auth_otp(request):
     if request.method == 'GET':
-        card_number = request.GET['card_number']
+        card_number = request.session['card_number']
         record = Record.objects.filter(id=card_number).first()
         phone_number = record.mobile_number
         _sid, otp = send_otp(card_number, phone_number)
