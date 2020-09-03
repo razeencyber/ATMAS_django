@@ -27,6 +27,7 @@ def detectFace(request):
     font = cv2.FONT_HERSHEY_SIMPLEX
     card_number = request.session[
         'CARD_NUMBER']  #we will use request.session to store the card number
+    print(f"CARD_NUMBER is {card_number}")
     userId = 0
     while (True):
         ret, img = cap.read()
