@@ -37,9 +37,10 @@ def detectFace(request):
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
             getId, conf = recognizer.predict(gray[y:y + h, x:x + w])
-            print(getId)
+            # print(type(getId))
+            # print(type(card_number))
             print(conf)
-            if conf < 69 and getId == card_number:
+            if conf < 42 and getId == int(card_number):
                 userId = getId
                 cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
                             2)
@@ -53,6 +54,7 @@ def detectFace(request):
             cv2.waitKey(5000)
             break
     print(userId)
+
     cap.release()
     cv2.destroyAllWindows()
     if userId != 0:
