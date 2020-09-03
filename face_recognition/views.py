@@ -39,8 +39,8 @@ def detectFace(request):
             getId, conf = recognizer.predict(gray[y:y + h, x:x + w])
             # print(type(getId))
             # print(type(card_number))
-            print(conf)
-            if conf < 42 and getId == int(card_number):
+            # print(f"getId {getId} card_number {card_number} conf {conf}")
+            if conf < 150 and getId == int(card_number):
                 userId = getId
                 cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
                             2)
@@ -54,10 +54,10 @@ def detectFace(request):
             cv2.waitKey(5000)
             break
     print(userId)
-
+    print(request.session.get('CARD_NUMBER'))
     cap.release()
     cv2.destroyAllWindows()
     if userId != 0:
-        return redirect('/admin')
+        return redirect('/demo')
     else:
         return redirect('/')

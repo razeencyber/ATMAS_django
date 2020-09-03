@@ -21,7 +21,7 @@ def home(request):
     else:
         login_form = CardLoginForm()
         context = {'form': login_form}
-        return render(request, 'login/home.html', context)
+        return render(request, 'home.html', context)
 
 
 def auth_otp(request):
@@ -34,7 +34,7 @@ def auth_otp(request):
         print(f"otp {otp}")
         otp_form = OtpForm()
         context = {'form': otp_form}
-        return render(request, 'login/otp.html', context)
+        return render(request, 'otp.html', context)
     elif request.method == 'POST':
         form_otp = request.POST.get('otp')
         otp = request.session.get('OTP')

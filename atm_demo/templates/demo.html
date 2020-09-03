@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="d-flex justify-content-around">
+        <div class="">
+            <h2>Welcome to ____ Bank</h2>
+        </div>
+        <div class="">
+            <h2>{{ name }}</h2>
+            <p class="p-2">Balance: {{ money }} INR</p>
+        </div>
+    </div>
+</div>
+<div class="container bg-light">
+    <div class="d-flex justify-content-around p-3">
+        <a class="text-center col-md-3 p-3 mb-3 bg-light" href="#">
+            Get Cash
+        </a>
+        <a class="text-center col-md-3 p-3 mb-3 bg-light" href="#">
+            Deposit Cash
+        </a>
+    </div>
+    <div class="d-flex justify-content-around p-3">
+        <a class="text-center col-md-3 p-3 mb-3 bg-secondary text-light" href="#">
+            Get Cash
+        </a>
+        <a class="text-center col-md-3 p-3 mb-3 bg-secondary text-light" href="#">
+            Deposit Cash
+        </a>
+    </div>
+</div>
+{% endblock content %}

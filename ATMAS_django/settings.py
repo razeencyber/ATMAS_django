@@ -55,9 +55,16 @@ ROOT_URLCONF = 'ATMAS_django.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'BACKEND':
+        'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'card_login', 'templates'),
+            os.path.join(BASE_DIR, 'face_recognition', 'templates'),
+            os.path.join(BASE_DIR, 'ATMAS_django', 'templates'),
+            os.path.join(BASE_DIR, 'atm_demo', 'templates'),
+        ],
+        'APP_DIRS':
+        True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -120,3 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
