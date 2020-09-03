@@ -8,11 +8,10 @@ from .otp import send_otp
 
 # Create your views here.
 def home(request):
-
     if request.method == 'POST':
         login_form = CardLoginForm(request.POST)
         card_number = request.POST['id']
-        request.session['card_number'] = card_number
+        request.session['CARD_NUMBER'] = card_number
         record = Record.objects.filter(id=card_number).first()
         print(record)
         if record is not None:
@@ -27,19 +26,21 @@ def home(request):
 
 def auth_otp(request):
     if request.method == 'GET':
-        card_number = request.session['card_number']
+        card_number = request.session['CARD_NUMBER']
         record = Record.objects.filter(id=card_number).first()
         phone_number = record.mobile_number
         _sid, otp = send_otp(card_number, phone_number)
-        request.session['otp'] = otp
+        request.session['OTP'] = otp
+        print(f"otp {otp}")
         otp_form = OtpForm()
         context = {'form': otp_form}
         return render(request, 'login/otp.html', context)
     elif request.method == 'POST':
-        form_otp = request.POST['otp']
-        otp = request.session['otp']
+        form_otp = request.POST.get('otp')
+        otp = request.session.get('OTP')
+        print(f"form {form_otp} otp {otp}")
         if form_otp == otp:
-            return redirect('/admin')
+            return redirect('/warn_face')
         else:
             return redirect('/')
 
