@@ -12,7 +12,7 @@ recognizer.read("trainer.yml") #Learning the trained data
 
 getId = 0
 font = cv2.FONT_HERSHEY_SIMPLEX
-card_number = 1 #we will use request.session to store the card number
+#card_number = 1 #we will use request.session to store the card number
 userId = 0
 while(True):
     ret, img = cap.read()
@@ -24,7 +24,7 @@ while(True):
         getId,conf = recognizer.predict(gray[y:y+h, x:x+w])
         print(getId)
         print(conf)
-        if conf <  42 and getId == card_number:
+        if conf <  42:
             userId = getId
             cv2.putText(img, "Detected",(x,y+h), font, 2, (0,255,0),2)
         else:
