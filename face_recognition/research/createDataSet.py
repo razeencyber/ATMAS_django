@@ -6,7 +6,7 @@ eye_cascade  = cv2.CascadeClassifier('cascades/data/haarcascade_eye.xml')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 cam = cv2.VideoCapture(0)
 
-id = 4
+id = 3
 
 sampleNum = 0
 while(True):

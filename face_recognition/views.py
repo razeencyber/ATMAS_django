@@ -22,9 +22,7 @@ def detectFace(request):
     recognizer.read(
         str(BASE_DIR) +
         "/face_recognition/research/trainer.yml")  #Learning the trained data
-    accuracy = []
-    count = 0
-    accuracy_percent = 0
+    
     getId = 0
     font = cv2.FONT_HERSHEY_SIMPLEX
     card_number = request.session[
@@ -43,12 +41,10 @@ def detectFace(request):
             # print(type(card_number))
 
             print(f"getId {getId} card_number {card_number} conf {conf}")
-            if conf < 45:
-                accuracy.append(getId)
-                if getId == int(card_number):
-                    userId = getId
-                    cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
-                                2)
+            if conf < 45 and getId == int(card_number):
+                userId = getId
+                cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
+                            2)
             else:
                 cv2.putText(img, "Unknown", (x, y + h), font, 2, (0, 0, 255),
                             2)
@@ -62,11 +58,6 @@ def detectFace(request):
     print(request.session.get('CARD_NUMBER'))
     cap.release()
     cv2.destroyAllWindows()
-    for itr in accuracy:
-        if itr == userId:
-            count += 1
-    accuracy_percent = count/len(accuracy)*100
-    print(str(accuracy_percent) +'%')
     if userId != 0:
         return redirect('/demo')
     else:
