@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-img1 = cv2.imread(BASE_DIR + '/images/user.123.6.jpg')
-gray_img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+image_dir = os.path.join(BASE_DIR, "images")
 
 def Binary_pattern(im):                               # creating function to get local binary pattern
     img= np.zeros_like(im)
@@ -27,27 +26,39 @@ def Binary_pattern(im):                               # creating function to get
     return(img)
 
 
+sampleNum = 0
+for root, dirs, files in os.walk(image_dir):
+    for file in files:
+        if file.endswith("png") or file.endswith("jpg"):
+            sampleNum += 1
+            path = os.path.join(root, file)
+            img1 = cv2.imread(path)
+            gray_img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+            
+            
+            imgLBP_1=Binary_pattern(gray_img1)           
+            vectorLBP_1 = imgLBP_1.flatten()              
+            fig_1=plt.figure(figsize=(20,8))             
+            ax_1  = fig_1.add_subplot(1,3,1)
+            ax_1.imshow(gray_img1)
+            ax_1.set_title("Gray Scale")
+            ax_1  = fig_1.add_subplot(1,3,2)
+            ax_1.imshow(imgLBP_1,cmap="gray")
+            ax_1.set_title("LBP Converted Image")
+            ax_1  = fig_1.add_subplot(1,3,3)
+            freq,lbp, _ = ax_1.hist(vectorLBP_1,bins=2**8)       
+            ax_1.set_ylim(0,15000)
+            lbp = lbp[:-1]
 
 
-imgLBP_1=Binary_pattern(gray_img1)           
-vectorLBP_1 = imgLBP_1.flatten()              
-fig_1=plt.figure(figsize=(20,8))             
-ax_1  = fig_1.add_subplot(1,3,1)
-ax_1.imshow(gray_img1)
-ax_1.set_title("gray scale image")
-ax_1  = fig_1.add_subplot(1,3,2)
-ax_1.imshow(imgLBP_1,cmap="gray")
-ax_1.set_title("LBP converted image")
-ax_1  = fig_1.add_subplot(1,3,3)
-freq,lbp, _ = ax_1.hist(vectorLBP_1,bins=2**8)       
-ax_1.set_ylim(0,15000)
-lbp = lbp[:-1]
+            ## print the LBP values when frequencies are high
+            largeTF = freq > 1000
+            for x, fr in zip(lbp[largeTF],freq[largeTF]):
+                ax_1.text(x,fr, "{:6.0f}".format(x),color="magenta")
+            ax_1.set_title("LBP Histogram")
 
-
-## print the LBP values when frequencies are high
-largeTF = freq > 1000
-for x, fr in zip(lbp[largeTF],freq[largeTF]):
-     ax_1.text(x,fr, "{:6.0f}".format(x),color="magenta")
-ax_1.set_title("LBP histogram")
-plt.savefig(BASE_DIR + '/plot_images/LBP_plot.png') #saving as LBP_plot.png instead of manually saving
-plt.show()
+            print("Saving Plot: " + str(sampleNum) + "......")
+            fig_1.savefig(BASE_DIR + '/plot_images/hist_plot.' + str(sampleNum) + '.png')
+            print("Closing figure: " + str(sampleNum))
+            plt.close(fig_1)
+            
