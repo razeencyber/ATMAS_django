@@ -1,7 +1,25 @@
 body {
-    background-color: lightblue;
+    background-color: #1a1c21;
+    background-image: url("/static/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 60px;
 }
-
-.container {
-    display: block;
+/* @media (max-width: 980px) { */
+/*     body { */
+/*       padding-top: 0; */
+/*     } */
+/* } */
+.transparent{    
+    background-color: rgba(159, 191, 223, 0.2);
+}
+.btn-custom {
+    color: #fff !important;
+    background-color: rgba(226, 28, 38, 0.9);
+    /* background-color: #e21c26; */
+}
+.btn-custom:hover{
+/* .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary { */
+    color: #fff !important;
+    background-color: #1c1c1c;
 }

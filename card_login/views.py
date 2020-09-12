@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from .models import Record
 from .forms import CardLoginForm, OtpForm
-from .otp import send_otp
+from .otp import send_otp, send_warn
 
 
 # Create your views here.
@@ -25,10 +25,10 @@ def home(request):
 
 
 def auth_otp(request):
+    card_number = request.session['CARD_NUMBER']
+    record = Record.objects.filter(id=card_number).first()
+    phone_number = record.mobile_number
     if request.method == 'GET':
-        card_number = request.session['CARD_NUMBER']
-        record = Record.objects.filter(id=card_number).first()
-        phone_number = record.mobile_number
         _sid, otp = send_otp(card_number, phone_number)
         request.session['OTP'] = otp
         print(f"otp {otp}")
@@ -42,6 +42,7 @@ def auth_otp(request):
         if form_otp == otp:
             return redirect('/warn_face')
         else:
+            _sid = send_warn(card_number, phone_number)
             return redirect('/')
 
     # return HttpResponse(
