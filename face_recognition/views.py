@@ -41,8 +41,10 @@ def detectFace(request):
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
             getId, conf = recognizer.predict(gray[y:y + h, x:x + w])
-            print(getId, conf)
-            if conf < 65 and getId == int(card_number):
+            #print(type(getId))
+            # print(type(card_number))
+            print(f"getId {getId} card_number {card_number} conf {conf}")
+            if conf < 45 and getId == int(card_number):
                 userId = getId
                 cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
                             2)
