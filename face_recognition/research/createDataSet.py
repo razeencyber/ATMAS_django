@@ -5,9 +5,9 @@ face_cascade = cv2.CascadeClassifier(
     'cascades/data/haarcascade_frontalface_alt2.xml')
 eye_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_eye.xml')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-cam = cv2.VideoCapture(1)
+cam = cv2.VideoCapture(0)
 
-id = 3
+id = 123
 
 sampleNum = 0
 while (True):
@@ -24,7 +24,7 @@ while (True):
     cv2.imshow("Face", img)
     cv2.waitKey(1)
 
-    if (sampleNum > 45):
+    if (sampleNum > 70):
         break
 cam.release()
 cv2.destroyAllWindows()

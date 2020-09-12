@@ -44,7 +44,7 @@ def detectFace(request):
             #print(type(getId))
             # print(type(card_number))
             print(f"getId {getId} card_number {card_number} conf {conf}")
-            if conf < 45 and getId == int(card_number):
+            if conf < 47 and getId == int(card_number):
                 userId = getId
                 cv2.putText(img, "Detected", (x, y + h), font, 2, (0, 255, 0),
                             2)
@@ -59,7 +59,7 @@ def detectFace(request):
             cv2.waitKey(5000)
             break
         elif get_frame > 70:
-            # send_warn(card_number, phone_number)
+            send_warn(card_number, phone_number)
             break
     print(userId)
     print(request.session.get('CARD_NUMBER'))
