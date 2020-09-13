@@ -6,8 +6,8 @@ from card_login.models import Record
 
 def demo(request):
     card_number = request.session.get('CARD_NUMBER')
-    # user = Record.objects.filter(id=card_number).first()
-    user = Record.objects.filter(id=123).first()
+    user = Record.objects.filter(id=card_number).first()
+    #user = Record.objects.filter(id=123).first()
     if user is None:
         return redirect('home')
     context = {
