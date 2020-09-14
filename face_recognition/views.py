@@ -77,16 +77,16 @@ def detectFace(request):
             
             
             if conf < 47 and getId == int(card_number):
-                if avg_blink_ratio > 8.0:
+                if avg_blink_ratio > 6.0:
                     userId = getId
                     cv2.putText(img, "Detected", (x, y1), font, 2, (0, 255, 0),
                                 2)
                 else:
                     get_frame += 1
                     cv2.rectangle(img, (x, y), (x1, y1), (0, 0, 255), 2)
-                    cv2.putText(img, "Spoof", (x, y1), font, 2, (0, 255, 255),
+                    cv2.putText(img, "Fake", (x, y1), font, 2, (0, 0, 255),
                             2)
-                    cv2.putText(img, "Please Blink",(50,150), font, 2, (255,0,0),3)
+                    cv2.putText(img, "Please Blink",(20,150), font, 2, (255,0,0),3)
                 
             else:
                 get_frame += 1
