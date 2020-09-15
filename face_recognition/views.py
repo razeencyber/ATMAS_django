@@ -78,7 +78,7 @@ def detectFace(request):
 
             avg_blink_ratio = (left_eye_ratio + right_eye_ratio) / 2
 
-            #Implementing Real time facial recognition
+            #Implementing Real time facial recognition and preventing exceptions
             try:
                 getId, conf = recognizer.predict(gray[y:y1, x:x1])
             except:
