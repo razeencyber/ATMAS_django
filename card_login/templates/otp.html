@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>Authenticate Your OTP</h1>
-    <form action="" method="POST">
+    <h1 class="text-light">Authenticate Your OTP</h1>
+    <form class="text-light" action="" method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">OTP</legend>

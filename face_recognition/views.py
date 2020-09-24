@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from ATMAS_django.settings import BASE_DIR
+from ATMAS_django.settings import BASE_DIR, CAMERA
 import numpy as np
 import cv2
 import dlib
@@ -20,7 +20,7 @@ def detectFace(request):
         str(BASE_DIR) +
         "/face_recognition/research/shape_predictor_68_face_landmarks.dat")  #
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(CAMERA)
 
     recognizer = cv2.face.LBPHFaceRecognizer_create()
     recognizer.read(
