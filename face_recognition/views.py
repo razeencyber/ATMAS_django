@@ -88,7 +88,7 @@ def detectFace(request):
             )
 
             if conf < 65 and getId == int(card_number):
-                if avg_blink_ratio > 6.0:
+                if avg_blink_ratio > 10.0:
                     userId = getId
                     cv2.putText(img, "Detected", (x, y1), font, 2, (0, 255, 0),
                                 2)
@@ -108,7 +108,7 @@ def detectFace(request):
         elif (userId != 0):
             cv2.waitKey(5000)
             break
-        elif get_frame > 520:
+        elif get_frame > 200:
             send_warn(card_number, phone_number)
             break
     print(userId)
