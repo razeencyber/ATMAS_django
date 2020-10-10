@@ -16,11 +16,6 @@ while True:
     faces = detector(gray)
     #Getting the face landmarks
     for face in faces:
-        x1 = face.left()
-        y1 = face.top()
-        x2 = face.right()
-        y2 = face.bottom()
-
         landmarks = predictor(gray, face)
         #Accessing the landmarks
         for point in range(0, 68):
