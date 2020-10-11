@@ -1,6 +1,8 @@
-# Development of Automated Teller Machine Authentication System (ATMAS)
+# ATMAS_django
+Implementation of ATMAS with django
 
 ## Introduction
+
 
 Automated Teller Machine(ATM) has become a vital part of our daily transactions since customers can
 access their bank deposit or card details to perform various financial transactions, most specifically cash withdrawals and
@@ -14,11 +16,7 @@ customer from the burden of remembering PIN as the random OTP generated itself a
 is detected an alert SMS will be sent to the PIN admin.
 
 
-## Software design
-![Flow Chart](https://i.imgur.com/FU8UBym.png)
 
-## Conceptual Model
-![Conceptual Model](https://i.imgur.com/PmaiB3x.png)
 ## Directory Structure
 
 ```
@@ -41,6 +39,7 @@ is detected an alert SMS will be sent to the PIN admin.
 │       └── login
 └── static
 ```
+
 ## Dependencies
 ```
 asgiref==3.2.10
