@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-image = cv2.imread(BASE_DIR + "/images/user.1.1.jpg")
+image = cv2.imread(BASE_DIR + "/sample_images/user.1.1.png")
 gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 def Binary_pattern(im):                               # creating function to get local binary pattern
@@ -36,11 +36,11 @@ ax_1.imshow(imgLBP_1,cmap="gray")
 ax_1.set_title("LBP Converted Image")
 ax_1  = fig_1.add_subplot(1,3,3)
 freq,lbp, _ = ax_1.hist(vectorLBP_1,bins=2**8)       
-ax_1.set_ylim(0,15000)
+ax_1.set_ylim(0,500000)
 lbp = lbp[:-1]
 
 ## print the LBP values when frequencies are high
-largeTF = freq > 1000
+largeTF = freq > 10000
 for x, fr in zip(lbp[largeTF],freq[largeTF]):
     ax_1.text(x,fr, "{:6.0f}".format(x),color="magenta")
 ax_1.set_title("LBP Histogram")
