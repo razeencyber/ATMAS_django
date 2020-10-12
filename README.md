@@ -49,37 +49,37 @@ is detected an alert SMS will be sent to the PIN admin.
 ## Dependencies
 ```
 asgiref==3.2.10
-astroid==2.4.2
 certifi==2020.6.20
 chardet==3.0.4
+cmake==3.18.2.post1
 cycler==0.10.0
 Django==3.1
 django-crispy-forms==1.9.2
 dlib==19.21.0
 idna==2.10
-isort==5.4.2
+joblib==0.16.0
 kiwisolver==1.2.0
-lazy-object-proxy==1.4.3
 matplotlib==3.3.1
-mccabe==0.6.1
+mysql==0.0.2
+mysqlclient==2.0.1
 numpy==1.19.1
 opencv-contrib-python==4.4.0.42
+opencv-python==4.4.0.42
 Pillow==7.2.0
 PyJWT==1.7.1
-pylint==2.6.0
-pylint-django==2.3.0
-pylint-plugin-utils==0.6
 pyparsing==2.4.7
 python-dateutil==2.8.1
 python-decouple==3.3
 pytz==2020.1
 requests==2.24.0
+scikit-learn==0.23.2
+scipy==1.5.2
 six==1.15.0
+sklearn==0.0
 sqlparse==0.3.1
-toml==0.10.1
-twilio==6.45.0
+threadpoolctl==2.1.0
+twilio==6.45.1
 urllib3==1.25.10
-wrapt==1.12.1
 ```
 ## Getting Started
 1. Create a virtual environment `pip -m virtualenv venv`
