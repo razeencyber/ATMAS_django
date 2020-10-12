@@ -85,9 +85,11 @@ wrapt==1.12.1
 1. Create a virtual environment `pip -m virtualenv venv`
 2. Source the virtualenv path using `source venv/bin/activate`
 3. Install dependencies using `pip install -r requirements.txt`
-4. Run `python face_recognition/research/createDataSet.py` to create a dataset of images using webcam or store images in face_recognition/research/images.
-5. Run `python face_recognition/research/trainer.py` to make a train the model.
-6. Run `python manage.py createsuperuser` to create a superuser
-6. Run the server using `python manage.py runserver`
-7. Open browser and go to https://localhost:8000/admin then login and add a new record with the userid of face_recognition dataset creation.
-8. Open https://localhost:8000 and proceed according to the onscreen directions.
+4. Delete all images in face_recognition/research/images to create your own dataset or add images diretly to the current dataset.
+5. Run `python face_recognition/research/createDataSet.py` to create a dataset of images using webcam or store images directly in face_recognition/research/images.
+6. Make sure to add your very own unique id in createDataSet.py which will act as your card number.
+7. Run `python face_recognition/research/trainer.py` to make a train the model.
+8. Run `python manage.py createsuperuser` to create a superuser
+9. Run the server using `python manage.py runserver`
+10. Open browser and go to https://localhost:8000/admin then login and add a new record with the userid of face_recognition dataset creation.
+11. Open https://localhost:8000 and proceed according to the onscreen directions.
