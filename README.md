@@ -1,8 +1,13 @@
 # Development of Automated Teller Machine Authentication System (ATMAS)
 
+## Authors
+  * Md Razeenuddin Mehdi (razeen-cyber)
+  * Uttarayan Mondal (uttarayan21)
+  * Md Adil Reza (adonis009)  
+
 ## Introduction
 
-Automated Teller Machine(ATM) has become a vital part of our daily transactions since customers can
+  Automated Teller Machine(ATM) has become a vital part of our daily transactions since customers can
 access their bank deposit or card details to perform various financial transactions, most specifically cash withdrawals and
 balance checking through the medium of ATM. Additionally, ATMs are important to travelers as one can withdraw cash in
 foreign countries thanks to ATM. ATM skimming and fraud are major security breaches are frequent for quite some time
@@ -15,10 +20,10 @@ is detected an alert SMS will be sent to the PIN admin.
 
 
 ## Software design
-![Flow Chart](https://i.imgur.com/FU8UBym.png)
+![Flow Chart](https://i.imgur.com/XMbmrxn.png)
 
 ## Conceptual Model
-![Conceptual Model](https://i.imgur.com/PmaiB3x.png)
+![Conceptual Model](https://i.imgur.com/oNpywiR.png)
 ## Directory Structure
 
 ```
