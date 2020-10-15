@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-image = cv2.imread(BASE_DIR + "/sample_images/user.1.1.png")
+image = cv2.imread(BASE_DIR + "/sample_images/user.2.1.jpg")
 gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 def Binary_pattern(im):                               # creating function to get local binary pattern
@@ -13,12 +13,14 @@ def Binary_pattern(im):                               # creating function to get
     n=3                                             
     for i in range(0,im.shape[0]-n):                 
       for j in range(0,im.shape[1]-n):              
-            x  = im[i:i+n,j:j+n]                     
-            center       = x[1,1]                    
-            img1        = (x >= center)*1.0          
+            x  = im[i:i+n,j:j+n]                    
+            center = x[1,1]                    
+            img1 = (x >= center)*1.0         
             img1_vector = img1.T.flatten()            
-            img1_vector = np.delete(img1_vector,4)  
-            digit = np.where(img1_vector)[0]         
+            img1_vector = np.delete(img1_vector,4)
+             
+            digit = np.where(img1_vector)[0]
+                 
             if len(digit) >= 1:                     
                 num = np.sum(2**digit)              
             else:                                    
@@ -45,4 +47,4 @@ for x, fr in zip(lbp[largeTF],freq[largeTF]):
     ax_1.text(x,fr, "{:6.0f}".format(x),color="magenta")
 ax_1.set_title("LBP Histogram")
 plt.show()
-fig_1.savefig(BASE_DIR + '/plot_images_test/hist_plot_test.png')
+fig_1.savefig(BASE_DIR + '/plot_images_test/hist_plot_test1.png')

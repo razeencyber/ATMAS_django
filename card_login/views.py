@@ -38,6 +38,7 @@ def auth_otp(request):
     elif request.method == 'POST':
         form_otp = request.POST.get('otp')
         otp = request.session.get('OTP')
+        request.session['FORM_OTP'] = form_otp
         print(f"form {form_otp} otp {otp}")
         if form_otp == otp:
             return redirect('/warn_face')

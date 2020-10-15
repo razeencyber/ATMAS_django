@@ -53,13 +53,19 @@ def detectFace(request):
 
     getId = 0
     font = cv2.FONT_HERSHEY_SIMPLEX
-    card_number = request.session[
-        'CARD_NUMBER']  #we will use request.session to store the card number
+    card_number = request.session['CARD_NUMBER']  #we will use request.session to store the card number
     record = Record.objects.filter(id=card_number).first()
     phone_number = record.mobile_number
     print(f"CARD_NUMBER is {card_number}")
     userId = 0
     get_frame = 0
+    otp_flag = 0
+    get_otp = request.session.get('FORM_OTP')
+    print(get_otp)
+    if get_otp != None:
+        otp_flag = 1
+    else:
+        return redirect('/')
     while (True):
         ret, img = cap.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -88,7 +94,7 @@ def detectFace(request):
             )
 
             if conf < 65 and getId == int(card_number):
-                if avg_blink_ratio > 10.0:
+                if avg_blink_ratio > 8.0:
                     userId = getId
                     cv2.putText(img, "Detected", (x, y1), font, 2, (0, 255, 0),
                                 2)
