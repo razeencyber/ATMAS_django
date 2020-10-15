@@ -1,17 +1,17 @@
-import numpy as np 
+import numpy as np
 import cv2
 
 #Video Capture a collection of images
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 while True:
-    
+
     #Capture frame-by-frame
     ret, frame = cap.read()
-    
+
     #Basic GrayScale
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    
+
     #Frames
     cv2.imshow('Face-Detector', frame)
     cv2.imshow('Basic Grayscale', gray)

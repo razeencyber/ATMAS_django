@@ -29,8 +29,15 @@ def auth_otp(request):
     record = Record.objects.filter(id=card_number).first()
     phone_number = record.mobile_number
     if request.method == 'GET':
+        if request.session.get('OTP_COUNTER') is None:
+            request.session['OTP_COUNTER'] = 0
+        if request.session['OTP_COUNTER'] > 3:
+            _sid = send_warn(card_number, phone_number)
+            request.session['OTP_COUNTER'] = 0
+            return redirect('/')
         _sid, otp = send_otp(card_number, phone_number)
         request.session['OTP'] = otp
+        request.session['OTP_COUNTER'] += 1
         print(f"otp {otp}")
         otp_form = OtpForm()
         context = {'form': otp_form}
