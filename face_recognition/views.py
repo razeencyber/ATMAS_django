@@ -59,11 +59,11 @@ def detectFace(request):
     print(f"CARD_NUMBER is {card_number}")
     userId = 0
     get_frame = 0
-    otp_flag = 0
     get_otp = request.session.get('FORM_OTP')
-    print(get_otp)
-    if get_otp != None:
-        otp_flag = 1
+    original_otp = request.session.get('OTP')
+    
+    if get_otp == original_otp:
+        pass
     else:
         return redirect('/')
     while (True):
