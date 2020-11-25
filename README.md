@@ -1,4 +1,7 @@
 # Development of Automated Teller Machine Authentication System (ATMAS)
+## Research Paper Link
+
+http://ijircce.com/upload/2020/october/34_2_Development1.pdf
 
 ## Authors
   * Md Razeenuddin Mehdi (razeen-cyber)
